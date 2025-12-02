@@ -1,0 +1,22 @@
+  spring:
+    security.oauth2.client:
+      provider:
+            twitter:
+              authorization-uri: https://twitter.com/i/oauth2/authorize
+              token-uri: https://api.twitter.com/2/oauth2/token
+              user-info-uri: https://api.twitter.com/2/users/me
+              user-name-attribute: id
+
+      registration:
+        google:
+          client-id: 1028107614982-t71i331paer0af24q2q3j255eghko96v.apps.googleusercontent.com
+          client-secret: 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
+        github:
+          client-id: Ov23li4KKYPEskyds64j
+          client-secret: 133a3b2cfd1a352fc8694a65085e2bb9e516ea48
+        twitter:  
+              client-id: YOUR_TWITTER_CLIENT_ID
+              client-secret: YOUR_TWITTER_CLIENT_SECRET
+              redirect-uri: "http://localhost:8080/login/oauth2/code/{registrationId}"
+              authorization-grant-type: authorization_code
+              client-name: Twitter

@@ -1,9 +1,11 @@
 package com.codingshuttle.youtube.hospitalManagement.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class LoginRequestDto{
+@AllArgsConstructor
+public class LoginRequestDto {
     private String username;
     private String password;
 }

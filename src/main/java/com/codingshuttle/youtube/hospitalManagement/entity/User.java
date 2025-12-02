@@ -1,55 +1,61 @@
-            package com.codingshuttle.youtube.hospitalManagement.entity;
+package com.codingshuttle.youtube.hospitalManagement.entity;
 
-            import jakarta.persistence.*;
-            import lombok.AllArgsConstructor;
-            import lombok.*;
-            import org.springframework.security.core.GrantedAuthority;
-            import org.springframework.security.core.userdetails.UserDetails;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-            import java.util.Collection;
-            import java.util.List;
+import com.codingshuttle.youtube.hospitalManagement.entity.type.AuthProviderType;
 
-            @Entity
-            @Getter
-            @Setter
-            @Builder
-            @AllArgsConstructor
-            @NoArgsConstructor
-            @Table(name = "app_user")
-            public class User implements UserDetails {
+import java.util.Collection;
+import java.util.List;
 
-                @Id
-                @GeneratedValue(strategy = GenerationType.IDENTITY)
-                private Long id;
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "app_user")
+public class User implements UserDetails {
 
-                @Column(unique = true, nullable = false)
-                private String username;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-                @Column(nullable = false)
-                private String password;
+    @Column(unique = true, nullable = false)
+    private String username;
 
-                @Override
-                public Collection<? extends GrantedAuthority> getAuthorities() {
-                    return List.of(); // roles yaha add kar sakte ho
-                }
+    // @Column(nullable = false)
+    private String password;
 
-                @Override
-                public boolean isAccountNonExpired() {
-                    return true;
-                }
+    private String providerId;
 
-                @Override
-                public boolean isAccountNonLocked() {
-                    return true;
-                }
+    @Enumerated(EnumType.STRING)
+    private AuthProviderType providerType;
 
-                @Override
-                public boolean isCredentialsNonExpired() {
-                    return true;
-                }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(); // roles yaha add kar sakte ho
+    }
 
-                @Override
-                public boolean isEnabled() {
-                    return true;
-                }
-            }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}
